@@ -8,34 +8,26 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.BorderPane?>
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.MorfEdit">
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-                prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-        <Button fx:id="playButton" layoutX="29.0" layoutY="348.0" mnemonicParsing="false" prefHeight="26.0"
-                prefWidth="79.0" text="WYKONAJ"/>
-        <Button fx:id="imageButton" layoutX="184.0" layoutY="23.0" mnemonicParsing="false" prefHeight="26.0"
-                prefWidth="111.0" text="WYBIERZ OBRAZ"/>
-        <Button fx:id="cleanButton" layoutX="108.0" layoutY="348.0" mnemonicParsing="false" prefHeight="26.0"
-                prefWidth="76.0" text="WYCZYŚĆ"/>
-        <ChoiceBox fx:id="operationList" layoutX="29.0" layoutY="23.0" prefHeight="26.0" prefWidth="154.0"/>
-        <AnchorPane fx:id="pane1" layoutX="29.0" layoutY="70.0" prefHeight="260.0" prefWidth="258.0"
-                    style="-fx-border-color: black;">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+         <Button fx:id="playButton" layoutX="29.0" layoutY="348.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" text="WYKONAJ" />
+         <Button fx:id="imageButton" layoutX="184.0" layoutY="23.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" text="WYBIERZ OBRAZ" />
+         <Button fx:id="cleanButton" layoutX="108.0" layoutY="348.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="WYCZYŚĆ" />
+         <ChoiceBox fx:id="operationList" layoutX="29.0" layoutY="23.0" prefHeight="26.0" prefWidth="154.0" />
+         <AnchorPane fx:id="pane1" layoutX="29.0" layoutY="70.0" prefHeight="260.0" prefWidth="258.0" style="-fx-border-color: black;">
             <children>
-                <ImageView fx:id="firstImage" fitHeight="253.0" fitWidth="262.0" layoutX="2.0" layoutY="4.0"
-                           pickOnBounds="true" preserveRatio="true" styleClass="b"/>
+               <ImageView fx:id="firstImage" fitHeight="253.0" fitWidth="262.0" layoutX="2.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" styleClass="b" />
             </children>
-        </AnchorPane>
-        <AnchorPane fx:id="pane2" layoutX="308.0" layoutY="70.0" prefHeight="260.0" prefWidth="258.0"
-                    style="-fx-border-color: black;">
+         </AnchorPane>
+         <AnchorPane fx:id="pane2" layoutX="308.0" layoutY="70.0" prefHeight="260.0" prefWidth="258.0" style="-fx-border-color: black;">
             <children>
-                <ImageView fx:id="iterationImage" fitHeight="253.0" fitWidth="262.0" layoutX="2.0" layoutY="4.0"
-                           pickOnBounds="true" preserveRatio="true" styleClass="b"/>
+               <ImageView fx:id="iterationImage" fitHeight="253.0" fitWidth="262.0" layoutX="2.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" styleClass="b" />
             </children>
-        </AnchorPane>
-        <Label fx:id="iterTitle" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="335.0" layoutY="28.0"
-               prefHeight="18.0" prefWidth="223.0" text="ITERACJA:">
+         </AnchorPane>
+         <Label fx:id="iterTitle" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="335.0" layoutY="28.0" prefHeight="18.0" prefWidth="223.0" text="ITERACJA:">
             <graphic>
-                <Text fx:id="showIter" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.33660888671875"/>
+               <Text fx:id="showIter" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.33660888671875" />
             </graphic>
-        </Label>
-    </AnchorPane>
+         </Label>
+      </children></AnchorPane>
 </BorderPane>
