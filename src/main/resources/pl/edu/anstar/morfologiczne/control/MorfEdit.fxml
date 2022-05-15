@@ -7,66 +7,107 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Scene xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.anstar.morfologiczne.control.MorfEditController">
-	<AnchorPane style="-fx-background-color: #F5FFFA;">
+
+<Scene xmlns="http://javafx.com/javafx/18"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="pl.edu.anstar.morfologiczne.control.MorfEditController">
+	<AnchorPane centerShape="false" maxHeight="1080.0"
+		maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity"
+		style="-fx-background-color: #F5FFFA;">
 		<children>
-			<ChoiceBox fx:id="choiceFcnList" layoutX="93.0" layoutY="21.0" prefHeight="44.0" prefWidth="528.0" style="-fx-background-color: #ADD8E6;" />
-			<Button fx:id="imageChoiceButton" layoutX="680.0" layoutY="21.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0" style="-fx-background-color: #ADD8E6;" text="WYBIERZ OBRAZ" textAlignment="CENTER">
+			<ChoiceBox fx:id="choiceFcnList" layoutX="93.0"
+				layoutY="21.0" prefHeight="44.0" prefWidth="528.0"
+				style="-fx-background-color: #ADD8E6;" />
+			<Button fx:id="selectImageButton" layoutX="680.0"
+				layoutY="21.0" mnemonicParsing="false" prefHeight="44.0"
+				prefWidth="272.0" style="-fx-background-color: #ADD8E6;"
+				text="WYBIERZ OBRAZ" textAlignment="CENTER">
 				<font>
 					<Font name="Century Gothic" size="20.0" />
 				</font>
 			</Button>
-			<AnchorPane layoutX="93.0" layoutY="99.0" prefHeight="605.0" prefWidth="622.0" style="-fx-border-color: BLACK;">
+			<AnchorPane layoutX="93.0" layoutY="99.0"
+				prefHeight="605.0" prefWidth="622.0"
+				style="-fx-border-color: BLACK;">
 				<children>
-					<ImageView fx:id="loadedImage" fitHeight="515.0" fitWidth="530.0" pickOnBounds="true" preserveRatio="true" />
+					<ImageView fx:id="sourceImage" fitHeight="515.0"
+						fitWidth="530.0" pickOnBounds="true" preserveRatio="true" />
 				</children>
 			</AnchorPane>
-			<AnchorPane layoutX="816.0" layoutY="97.0" prefHeight="570.0" prefWidth="587.0" style="-fx-border-color: BLACK;">
+			<AnchorPane layoutX="816.0" layoutY="97.0"
+				prefHeight="570.0" prefWidth="587.0"
+				style="-fx-border-color: BLACK;">
 				<children>
-					<ImageView fx:id="editImage" fitHeight="606.0" fitWidth="624.0" pickOnBounds="true" preserveRatio="true" />
+					<ImageView fx:id="resultImage" fitHeight="606.0"
+						fitWidth="624.0" pickOnBounds="true" preserveRatio="true" />
 				</children>
 			</AnchorPane>
-			<Label fx:id="iterLabel" contentDisplay="RIGHT" layoutX="994.0" layoutY="21.0" prefHeight="44.0" prefWidth="309.0" text="LICZBA ITERACJI:">
+			<Label fx:id="iterLabel" contentDisplay="RIGHT" layoutX="994.0"
+				layoutY="21.0" prefHeight="44.0" prefWidth="309.0"
+				text="LICZBA ITERACJI:">
 				<font>
 					<Font name="Century Gothic" size="23.0" />
 				</font>
 				<graphic>
-					<Text fx:id="iterNumberDisplay" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="121.336669921875">
+					<Text fx:id="iterNumberDisplay"
+						nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE"
+						strokeWidth="0.0" textAlignment="CENTER"
+						wrappingWidth="121.336669921875">
 						<font>
 							<Font name="Century Gothic" size="28.0" />
 						</font>
 					</Text>
 				</graphic>
 			</Label>
-			<Button fx:id="doButton" layoutX="93.0" layoutY="716.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0" style="-fx-background-color: #ADD8E6;" text="WYKONAJ" textAlignment="CENTER">
+			<Button fx:id="doButton" layoutX="93.0" layoutY="716.0"
+				mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0"
+				style="-fx-background-color: #ADD8E6;" text="WYKONAJ"
+				textAlignment="CENTER">
 				<font>
 					<Font name="Century Gothic" size="20.0" />
 				</font>
 			</Button>
-			<Button fx:id="cleanButton" layoutX="442.0" layoutY="716.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0" style="-fx-background-color: #ADD8E6;" text="WYCZYŚĆ" textAlignment="CENTER">
+			<Button fx:id="cleanButton" layoutX="442.0" layoutY="716.0"
+				mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0"
+				style="-fx-background-color: #ADD8E6;" text="WYCZYŚĆ"
+				textAlignment="CENTER">
 				<font>
 					<Font name="Century Gothic" size="20.0" />
 				</font>
 			</Button>
-			<Label fx:id="languageLabel" layoutX="1237.0" layoutY="724.0" text="JĘZYK / LANGUAGE">
-				<font>
-					<Font name="Century Gothic" size="22.0" />
-				</font>
-			</Label>
-
-			<RadioButton fx:id="languagePLRadio" layoutX="1255.0" layoutY="764.0" mnemonicParsing="false" text="PL">
-				<font>
-					<Font name="Century Gothic" size="20.0" />
-				</font>
-			</RadioButton>
-			<RadioButton fx:id="languageENGRadio" layoutX="1352.0" layoutY="764.0" mnemonicParsing="false" text="ENG">
-				<font>
-					<Font name="Century Gothic" size="20.0" />
-				</font>
-			</RadioButton>
+			<VBox layoutX="1206.0" layoutY="716.0">
+				<children>
+					<Label fx:id="languageLabel" alignment="TOP_CENTER"
+						text="JĘZYK / LANGUAGE" textAlignment="CENTER">
+						<font>
+							<Font name="Century Gothic" size="22.0" />
+						</font>
+					</Label>
+					<HBox alignment="TOP_CENTER" spacing="30.0">
+						<children>
+							<RadioButton fx:id="languagePLRadio"
+								alignment="CENTER_LEFT" mnemonicParsing="false"
+								onAction="#setLanguageRadio" text="PL">
+								<font>
+									<Font name="Century Gothic" size="20.0" />
+								</font>
+							</RadioButton>
+							<RadioButton fx:id="languageENGRadio"
+								alignment="CENTER_RIGHT" mnemonicParsing="false"
+								onAction="#setLanguageRadio" text="ENG">
+								<font>
+									<Font name="Century Gothic" size="20.0" />
+								</font>
+							</RadioButton>
+						</children>
+					</HBox>
+				</children>
+			</VBox>
 		</children>
 	</AnchorPane>
 </Scene>

@@ -1,6 +1,5 @@
 package pl.edu.anstar.morfologiczne.control;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,56 +10,68 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 
 @SuppressWarnings("unused")
 public class MorfEditController implements Initializable {
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		languagePLRadio.setSelected(true);
-	}
-	
 	@FXML
 	private ChoiceBox<?> choiceFcnList;
 	@FXML
 	private ChoiceBox<String> operationList;
-	
-	// Image handling
-	@FXML
-	private Button imageChoiceButton;
-	@FXML
-	private ImageView loadedImage;
-	@FXML
-	private ImageView editImage;
-	
-	private void imageSelect() {
-		
-	}
-	
-	@FXML
-	private RadioButton languagePLRadio;
-	@FXML
-	private RadioButton languageENGRadio;
-	
-	private void setLanguageRadio(ActionEvent event) {
-		if (languagePLRadio.isSelected()) {
-			System.out.println("PL");
-			// TODO set all buttons text
-		} else if (languageENGRadio.isSelected()) {
-			System.out.println("ENG");
-			// TODO translate and set all buttons text
-		}
-	}
-	
 	@FXML
 	private Label iterLabel;
 	
 	private final String[] types = { "Szkieletyzacja", "Obcinanie gałęzi", "Centroidy" };
 	
-	// ----- METHODS
-	public MorfEditController() throws IOException {
+	// Image handling
+	@FXML
+	private Button selectImageButton;
+	@FXML
+	private ImageView sourceImage;
+	@FXML
+	private ImageView resultImage;
+	
+	private void imageSelect() {
 		
+	}
+	
+	// Radio buttons handling
+	@FXML
+	private RadioButton languagePLRadio;
+	@FXML
+	private RadioButton languageENGRadio;
+	
+	@FXML
+	private void setLanguageRadio(ActionEvent event) {
+		if (languagePLRadio.isSelected()) {
+			languageENGRadio.setSelected(false);
+			this.setLanguageToPolish();
+			System.out.println("PL");
+		} else if (languageENGRadio.isSelected()) {
+			languagePLRadio.setSelected(false);
+			this.setLanguageToEnglish();
+			System.out.println("ENG");
+		}
+	}
+	
+	private void setLanguageToEnglish() {
+		// TODO translate and set all buttons text
+	}
+	
+	private void setLanguageToPolish() {
+		// TODO set all buttons text back to Polish
+	}
+	
+	// ----- METHODS
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		ToggleGroup languageRadioToggleGroup = new ToggleGroup();
+		this.languagePLRadio.setSelected(true);
+		this.languagePLRadio.setToggleGroup(languageRadioToggleGroup);
+		this.languageENGRadio.setToggleGroup(languageRadioToggleGroup);
 	}
 	
 	public void buttonOption() {
@@ -110,5 +121,4 @@ public class MorfEditController implements Initializable {
 		}
 		return 4;
 	}
-	
 }
