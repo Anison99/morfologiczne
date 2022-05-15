@@ -14,34 +14,54 @@ public class ControlPanel {
 	private ChoiceBox<String> operationList = new ChoiceBox<>();
 	private final String[] types = { "Szkieletyzacja", "Obcinanie gałęzi", "Centroidy" };
 
+
+
+
 	// ----- METHODS
 	public ControlPanel() throws IOException {
 
 	}
 
-	public void buttonOption() {
+	public void buttonOption(){
 		String typeChoose = operationList.getValue();
 		typOption(typeChoose);
 	}
-
 	private void typOption(String typeChoose) {
 		String chooseLabel = "Obecny Format: " + typeChoose;
 		int op1 = updateOp(typeChoose);
-		switch (typeChoose) {
-		case "Szkieletyzacja":
-			/*
-			 * date.setOperator(op1); dateLabel1.setText(chooseLabel); update();
+		switch(typeChoose){
+			case "Rzymski":
+				/*date.setOperator(op1);
+				dateLabel1.setText(chooseLabel);
+				update();
+				 */
+			case "Krótki":
+			/*	date.setOperator(op1);
+				dateLabel1.setText(chooseLabel);
+				update();
+
 			 */
-		case "Obcinanie gałęzi":
-			/*
-			 * date.setOperator(op1); dateLabel1.setText(chooseLabel); update();
-			 */
-		case "Centroidy":
-			/*
-			 * date.setOperator(op1); dateLabel1.setText(chooseLabel); update();
-			 */
+			case "Długi":
+				/*date.setOperator(op1);
+				dateLabel1.setText(chooseLabel);
+				update();
+
+				 */
+			case "Alternatywny":
+				/*date.setOperator(op1);
+				dateLabel1.setText(chooseLabel);
+				update();
+
+				 */
+			case "Domyślny":
+				/*date.setOperator(op1);
+				dateLabel1.setText(chooseLabel);
+				update();
+
+				 */
 		}
 	}
+
 
 	private int updateOp(String string) {
 		switch (string) {
