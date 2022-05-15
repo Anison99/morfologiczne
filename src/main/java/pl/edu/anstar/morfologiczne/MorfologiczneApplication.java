@@ -14,8 +14,9 @@ public class MorfologiczneApplication extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		currentScene = FXMLLoader.load(getClass().getResource("control/MorfEdit.fxml"));
-		stage.setWidth(1920);
-		stage.setHeight(1080);
+//		stage.setWidth(1920);
+//		stage.setHeight(1080);
+		stage.setMaximized(true);
 		stage.setScene(currentScene);
 		stage.setTitle("Iteracyjne Operacje Morfologiczne");
 		stage.show();
