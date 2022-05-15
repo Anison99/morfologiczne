@@ -1,4 +1,4 @@
-package control;
+package pl.edu.anstar.morfologiczne;
 
 import java.io.IOException;
 
@@ -7,19 +7,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MorfEdit extends Application {
+public class MorfologiczneApplication extends Application {
+	
+	private static Scene currentScene;
+	
 	@Override
 	public void start(Stage stage) throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(MorfEdit.class.getResource("MorfEdit.fxml"));
-		Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
-		stage.setResizable(false);
+		currentScene = FXMLLoader.load(getClass().getResource("control/MorfEdit.fxml"));
+		stage.setWidth(1920);
+		stage.setHeight(1080);
+		stage.setScene(currentScene);
 		stage.setTitle("Iteracyjne Operacje Morfologiczne");
-		stage.setScene(scene);
 		stage.show();
-		//stage.setFullScreen(true);
-		stage.setMaximized(true);
 	}
-
+	
 	public static void main(String[] args) {
 		launch();
 	}

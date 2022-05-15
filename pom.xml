@@ -42,7 +42,7 @@
 						<!-- Default configuration for running with: mvn clean javafx:run -->
 						<id>default-cli</id>
 						<configuration>
-							<mainClass>control.MorfEdit</mainClass>
+							<mainClass>pl.edu.anstar.morfologiczne.MorfologiczneApplication</mainClass>
 						</configuration>
 					</execution>
 				</executions>
