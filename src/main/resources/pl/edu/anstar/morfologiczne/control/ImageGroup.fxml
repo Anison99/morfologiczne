@@ -10,52 +10,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.anstar.morfologiczne.control.ImageGroupController">
-   <children>
-      <Pane fx:id="sourceImagePane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: BLACK;">
-      	<children>
-      		<ImageView fx:id="sourceImageView" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
-      		<Button fx:id="sourceInternalButton" layoutX="164.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonOnClick" prefHeight="44.0" prefWidth="272.0" text="WYBIERZ OBRAZ" textAlignment="CENTER">
-      			<font>
-      				<Font name="Century Gothic" size="20.0" />
-      			</font>
-      		</Button>
-      	</children>
-      </Pane>
-      <VBox alignment="CENTER" spacing="20.0">
-         <HBox.margin>
-            <Insets />
-         </HBox.margin>
-         <children>
-            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#buttonOnClick" prefHeight="44.0" prefWidth="272.0" text="WYCZYŚĆ" textAlignment="CENTER">
-               <font>
-                  <Font name="Century Gothic" size="20.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets left="20.0" right="20.0" />
-         </padding>
-      </VBox>
-      <VBox>
-         <children>
-            <Pane fx:id="targetImagePane" style="-fx-border-color: BLACK;">
-               <children>
-                  <ImageView fx:id="targetImageView" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="targetInternalButton" layoutX="164.0" layoutY="279.0" mnemonicParsing="false" onAction="#buttonOnClick" prefHeight="44.0" prefWidth="272.0" text="WYKONAJ" textAlignment="CENTER">
-                     <font>
-                        <Font name="Century Gothic" size="20.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
-            <Label fx:id="algorithmStepLabel" contentDisplay="BOTTOM" text="Krok Algorytmu">
-               <graphic>
-                  <Slider fx:id="algorithmStepSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minorTickCount="0" prefWidth="600.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-               </graphic>
-            </Label>
-         </children>
-      </VBox>
-   </children>
+	<children>
+		<Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: BLACK;">
+			<children>
+				<ImageView fx:id="sourceImageView" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+			</children>
+		</Pane>
+		<VBox alignment="CENTER" spacing="20.0">
+			<HBox.margin>
+				<Insets />
+			</HBox.margin>
+			<children>
+				<Button fx:id="selectButton" alignment="CENTER" mnemonicParsing="false" onAction="#uploadImage" prefHeight="44.0" prefWidth="272.0" text="WYBIERZ OBRAZ" textAlignment="CENTER">
+					<font>
+						<Font name="Century Gothic" size="20.0" />
+					</font>
+				</Button>
+						<fx:include fx:id="radioGroup" source="RadioGroup.fxml" />
+			</children>
+			<padding>
+				<Insets left="20.0" right="20.0" />
+			</padding>
+		</VBox>
+		<VBox>
+			<children>
+				<Pane style="-fx-border-color: BLACK;">
+					<children>
+						<ImageView fx:id="targetImageView" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+					</children>
+				</Pane>
+				<Label fx:id="algorithmStepSliderLabel" contentDisplay="BOTTOM" text="Krok Algorytmu">
+					<graphic>
+						<Slider fx:id="algorithmStepSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minorTickCount="0" prefWidth="600.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+					</graphic>
+				</Label>
+			</children>
+		</VBox>
+	</children>
 </HBox>

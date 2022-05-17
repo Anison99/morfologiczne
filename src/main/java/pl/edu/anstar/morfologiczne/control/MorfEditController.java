@@ -13,9 +13,8 @@ import javafx.scene.image.ImageView;
 @SuppressWarnings("unused")
 public class MorfEditController implements Initializable {
 	
-	// Children
 	@FXML
-	private RadioGroupController radioGroupController;
+	private ImageGroupController imageGroup;
 	
 	@FXML
 	ChoiceBox<?> choiceFcnList;
@@ -37,11 +36,9 @@ public class MorfEditController implements Initializable {
 	}
 	
 	// ----- METHODS
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		radioGroupController.setParentController(this);
-		
+		imageGroup.setParentController(this);
 	}
 	
 }

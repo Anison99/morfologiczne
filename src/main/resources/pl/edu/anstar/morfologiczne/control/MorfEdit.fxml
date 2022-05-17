@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -24,30 +19,22 @@
 			<ChoiceBox fx:id="choiceFcnList" layoutX="93.0"
 				layoutY="21.0" prefHeight="44.0" prefWidth="528.0"
 				style="-fx-background-color: #ADD8E6;" />
-			<Button fx:id="selectImageButton" layoutX="680.0"
-				layoutY="21.0" mnemonicParsing="false" prefHeight="44.0"
-				prefWidth="272.0" style="-fx-background-color: #ADD8E6;"
-				text="WYBIERZ OBRAZ" textAlignment="CENTER">
+			<Button fx:id="doButton" layoutX="93.0" layoutY="716.0"
+				mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0"
+				style="-fx-background-color: #ADD8E6;" text="WYKONAJ"
+				textAlignment="CENTER">
 				<font>
 					<Font name="Century Gothic" size="20.0" />
 				</font>
 			</Button>
-			<AnchorPane layoutX="93.0" layoutY="99.0"
-				prefHeight="605.0" prefWidth="622.0"
-				style="-fx-border-color: BLACK;">
-				<children>
-					<ImageView fx:id="sourceImage" fitHeight="515.0"
-						fitWidth="530.0" pickOnBounds="true" preserveRatio="true" />
-				</children>
-			</AnchorPane>
-			<AnchorPane layoutX="816.0" layoutY="97.0"
-				prefHeight="570.0" prefWidth="587.0"
-				style="-fx-border-color: BLACK;">
-				<children>
-					<ImageView fx:id="resultImage" fitHeight="606.0"
-						fitWidth="624.0" pickOnBounds="true" preserveRatio="true" />
-				</children>
-			</AnchorPane>
+			<Button fx:id="cleanButton" layoutX="442.0" layoutY="716.0"
+				mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0"
+				style="-fx-background-color: #ADD8E6;" text="WYCZYŚĆ"
+				textAlignment="CENTER">
+				<font>
+					<Font name="Century Gothic" size="20.0" />
+				</font>
+			</Button>
 			<Label fx:id="iterLabel" contentDisplay="RIGHT" layoutX="994.0"
 				layoutY="21.0" prefHeight="44.0" prefWidth="309.0"
 				text="LICZBA ITERACJI:">
@@ -65,30 +52,14 @@
 					</Text>
 				</graphic>
 			</Label>
-			<Button fx:id="doButton" layoutX="93.0" layoutY="716.0"
-				mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0"
-				style="-fx-background-color: #ADD8E6;" text="WYKONAJ"
-				textAlignment="CENTER">
-				<font>
-					<Font name="Century Gothic" size="20.0" />
-				</font>
-			</Button>
-			<Button fx:id="cleanButton" layoutX="442.0" layoutY="716.0"
-				mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0"
-				style="-fx-background-color: #ADD8E6;" text="WYCZYŚĆ"
-				textAlignment="CENTER">
-				<font>
-					<Font name="Century Gothic" size="20.0" />
-				</font>
-			</Button>
-			
-			<fx:include fx:id="radioGroup" layoutX="1206.0" layoutY="716.0" source="RadioGroup.fxml"/>
-			
-			<Slider blockIncrement="1.0" layoutX="817.0" layoutY="66.0"
-				majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="17.0"
-				prefWidth="625.0" showTickLabels="true" snapToTicks="true"
-				value="10.0">
-			</Slider>
+			<Pane fx:id="imageGroupPane" layoutX="-14.0"
+				maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+				minHeight="-Infinity" minWidth="-Infinity">
+				<children>
+					<fx:include fx:id="imageGroup" layoutX="95.0"
+						layoutY="100.0" source="ImageGroup.fxml" />
+				</children>
+			</Pane>
 		</children>
 	</AnchorPane>
 </Scene>

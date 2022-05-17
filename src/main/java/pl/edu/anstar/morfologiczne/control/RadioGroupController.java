@@ -13,9 +13,9 @@ import javafx.scene.control.ToggleGroup;
 public class RadioGroupController extends ChildController implements Initializable {
 	
 	@FXML
-	private RadioButton languagePLRadio;
+	RadioButton languagePLRadio;
 	@FXML
-	private RadioButton languageENGRadio;
+	RadioButton languageENGRadio;
 	@FXML
 	private Label languageLabel;
 	
@@ -27,17 +27,24 @@ public class RadioGroupController extends ChildController implements Initializab
 		this.languagePLRadio.setSelected(true);
 	}
 	
+	public boolean isEnglishSet() {
+		return (languageENGRadio.isSelected() && !languagePLRadio.isSelected()) ? true : false;
+	}
+	
+	public boolean isPolishSet() {
+		return (languagePLRadio.isSelected() && !languageENGRadio.isSelected()) ? true : false;
+	}
+	
 	@FXML
 	private void setLanguageRadio(ActionEvent event) {
 		if (languagePLRadio.isSelected()) {
-			languageENGRadio.setSelected(false);
+//			languageENGRadio.setSelected(false);
 			this.setLanguageToPolish();
 			System.out.println("PL");
-		} else if (languageENGRadio.isSelected()) {
-			languagePLRadio.setSelected(false);
-			this.setLanguageToEnglish();
-			System.out.println("ENG");
 		}
+//		languagePLRadio.setSelected(false);
+		this.setLanguageToEnglish();
+		System.out.println("ENG");
 	}
 	
 	private void setLanguageToPolish() {
