@@ -14,22 +14,16 @@
 	fx:controller="pl.edu.anstar.morfologiczne.control.MorfEditController">
 	<AnchorPane centerShape="false" maxHeight="1080.0"
 		maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity"
+		prefHeight="809.0" prefWidth="1303.0"
 		style="-fx-background-color: #F5FFFA;">
 		<children>
 			<ChoiceBox fx:id="choiceFcnList" layoutX="93.0"
 				layoutY="21.0" prefHeight="44.0" prefWidth="528.0"
 				style="-fx-background-color: #ADD8E6;" />
-			<Button fx:id="selectImageButton" layoutX="680.0" onAction="#imageSelect"
-				layoutY="21.0" mnemonicParsing="false" prefHeight="44.0"
-				prefWidth="272.0" style="-fx-background-color: #ADD8E6;"
-				text="WYBIERZ OBRAZ" textAlignment="CENTER">
-				<font>
-					<Font name="Century Gothic" size="20.0" />
-				</font>
-			</Button>
-			<Button fx:id="resetButton" layoutX="442.0" layoutY="716.0" onAction="#reset"
-				mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0"
-				style="-fx-background-color: #ADD8E6;" text="WYCZYŚĆ"
+			<Button fx:id="selectImageButton" layoutX="680.0"
+				layoutY="21.0" mnemonicParsing="false" onAction="#imageSelect"
+				prefHeight="44.0" prefWidth="272.0"
+				style="-fx-background-color: #ADD8E6;" text="WYBIERZ OBRAZ"
 				textAlignment="CENTER">
 				<font>
 					<Font name="Century Gothic" size="20.0" />
@@ -52,12 +46,29 @@
 					</Text>
 				</graphic>
 			</Label>
-			<Pane fx:id="imageGroupPane" layoutX="-14.0"
+			<Pane fx:id="imageGroupPane" layoutX="29.0" layoutY="75.0"
 				maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-				minHeight="-Infinity" minWidth="-Infinity">
+				minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0"
+				prefWidth="1245.0">
 				<children>
-					<fx:include fx:id="imageGroup" layoutX="95.0"
-						layoutY="100.0" source="ImageGroup.fxml" />
+					<fx:include fx:id="imageGroup" source="ImageGroup.fxml" />
+					<Pane fx:id="radioGroupPane" layoutX="52.0" layoutY="623.0"
+						maxHeight="1.7976931348623157E308"
+						maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+						minWidth="-Infinity">
+						<children>
+							<fx:include fx:id="radioGroup"
+								source="RadioGroup.fxml" />
+						</children>
+					</Pane>
+					<Button fx:id="resetButton" layoutX="333.0" layoutY="635.0"
+						mnemonicParsing="false" onAction="#reset" prefHeight="44.0"
+						prefWidth="272.0" style="-fx-background-color: #ADD8E6;"
+						text="WYCZYŚĆ" textAlignment="CENTER">
+						<font>
+							<Font name="Century Gothic" size="20.0" />
+						</font>
+					</Button>
 				</children>
 			</Pane>
 		</children>
