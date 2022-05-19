@@ -1,4 +1,4 @@
-package pl.edu.anstar.morfologiczne.algorithm;
+package pl.edu.anstar.morfologiczne;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -14,9 +14,9 @@ import org.opencv.imgproc.Imgproc;
 
 import javafx.scene.image.Image;
 
-public class Skeletonization {
+public class Algorithm {
 	
-	private static Mat skeleton(Mat sourceImg) {
+	public static Mat skeletonization(Mat sourceImg) {
 		boolean done = false;
 		Mat img = sourceImg.clone();
 		
@@ -50,9 +50,9 @@ public class Skeletonization {
 		return skel;
 	}
 	
-//	public static Mat loadImage(String imagePath) {
-//		return Imgcodecs.imread(imagePath);
-//	}
+	public static Mat loadImage(String imagePath) {
+		return Imgcodecs.imread(imagePath);
+	}
 	
 	public static Image mat2Img(Mat mat) {
 		MatOfByte bytes = new MatOfByte();

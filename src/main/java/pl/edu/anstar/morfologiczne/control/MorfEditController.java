@@ -6,14 +6,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.opencv.core.Mat;
+import org.opencv.imgcodecs.Imgcodecs;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import pl.edu.anstar.morfologiczne.Algorithm;
 
 public class MorfEditController implements Initializable {
 	
@@ -56,9 +59,10 @@ public class MorfEditController implements Initializable {
 		List<String> list = Arrays.asList(new String[] { "*.bmp", "*.png", "*.jpg" });
 		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", list));
 		File selectedFile = fc.showOpenDialog(null);
-		Image image = new Image(selectedFile.getAbsolutePath());
 		
-		this.sourceImage.setImage(image);
+		Mat src = Imgcodecs.imread(selectedFile.getAbsolutePath());
+		sourceImage.setImage(Algorithm.mat2Img(src));
+		
 	}
 	
 }
