@@ -38,11 +38,9 @@ public class RadioGroupController extends ChildController implements Initializab
 	@FXML
 	private void setLanguageRadio(ActionEvent event) {
 		if (languagePLRadio.isSelected()) {
-//			languageENGRadio.setSelected(false);
 			this.setLanguageToPolish();
 			System.out.println("PL");
 		}
-//		languagePLRadio.setSelected(false);
 		this.setLanguageToEnglish();
 		System.out.println("ENG");
 	}
