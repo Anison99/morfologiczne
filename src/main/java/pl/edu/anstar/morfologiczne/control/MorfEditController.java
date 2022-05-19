@@ -67,6 +67,15 @@ public class MorfEditController implements Initializable {
 		imageGroupController.getSourceImageView().setImage(Algorithm.mat2Img(src));
 		Mat tgt = Algorithm.skeletonization(src);
 		imageGroupController.getTargetImageView().setImage(Algorithm.mat2Img(tgt));
+		
+		imageGroupController.algorithmStepSliderLabel.setVisible(true);
+	}
+	
+	@FXML
+	private void reset() {
+		imageGroupController.getSourceImageView().setImage(null);
+		imageGroupController.getTargetImageView().setImage(null);
+		imageGroupController.algorithmStepSliderLabel.setVisible(false);
 	}
 	
 }

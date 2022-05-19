@@ -27,7 +27,7 @@
 					<Font name="Century Gothic" size="20.0" />
 				</font>
 			</Button>
-			<Button fx:id="resetButton" layoutX="442.0" layoutY="716.0"
+			<Button fx:id="resetButton" layoutX="442.0" layoutY="716.0" onAction="#reset"
 				mnemonicParsing="false" prefHeight="44.0" prefWidth="272.0"
 				style="-fx-background-color: #ADD8E6;" text="WYCZYŚĆ"
 				textAlignment="CENTER">
