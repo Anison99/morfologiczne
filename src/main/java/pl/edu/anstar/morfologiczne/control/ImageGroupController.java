@@ -8,20 +8,18 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
-public class ImageGroupController extends ChildController implements Initializable {
+public class ImageGroupController implements Initializable {
 	
-	private final String SELECT_IMAGE_PL = "Wybierz obraz";
-	private final String SELECT_IMAGE_EN = "Select Image";
+	protected MorfEditController parentController;
 	
 	@FXML
-	Button selectButton;
+	private RadioGroupController radioGroupController;
 	
 	@FXML
 	private ImageView sourceImageView;
@@ -33,18 +31,18 @@ public class ImageGroupController extends ChildController implements Initializab
 	@FXML
 	Slider algorithmStepSlider;
 	
-	RadioGroupController radioGroup;
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.radioGroup.setParentController(parentController);
 		this.algorithmStepSliderLabel.setVisible(false);
 	}
+	
+	private final String SELECT_IMAGE_PL = "Wybierz obraz";
+	private final String SELECT_IMAGE_EN = "Select Image";
 	
 	public void uploadImage() {
 		FileChooser fc = new FileChooser();
 		
-		if (radioGroup.isEnglishSet()) {
+		if (radioGroupController.isEnglishSet()) {
 			fc.setTitle(SELECT_IMAGE_EN);
 		} else {
 			fc.setTitle(SELECT_IMAGE_PL);
@@ -58,15 +56,12 @@ public class ImageGroupController extends ChildController implements Initializab
 		
 		this.algorithmStepSliderLabel.setVisible(true);
 		
-		this.selectButton.setText("Reset");
 	}
 	
 	public void reset() {
 		this.sourceImageView.setImage(null);
 		this.targetImageView.setImage(null);
 		this.algorithmStepSliderLabel.setVisible(false);
-		
-		this.selectButton.setText((this.radioGroup.isPolishSet()) ? SELECT_IMAGE_PL : SELECT_IMAGE_EN);
 	}
 	
 	public ImageView getSourceImageView() {

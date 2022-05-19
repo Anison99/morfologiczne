@@ -10,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 
-public class RadioGroupController extends ChildController implements Initializable {
+public class RadioGroupController implements Initializable {
+	
+	protected MorfEditController parentController;
 	
 	@FXML
 	RadioButton languagePLRadio;
@@ -27,14 +29,6 @@ public class RadioGroupController extends ChildController implements Initializab
 		this.languagePLRadio.setSelected(true);
 	}
 	
-	public boolean isEnglishSet() {
-		return (languageENGRadio.isSelected() && !languagePLRadio.isSelected()) ? true : false;
-	}
-	
-	public boolean isPolishSet() {
-		return (languagePLRadio.isSelected() && !languageENGRadio.isSelected()) ? true : false;
-	}
-	
 	@FXML
 	private void setLanguageRadio(ActionEvent event) {
 		if (languagePLRadio.isSelected()) {
@@ -43,6 +37,14 @@ public class RadioGroupController extends ChildController implements Initializab
 		}
 		this.setLanguageToEnglish();
 		System.out.println("ENG");
+	}
+	
+	public boolean isEnglishSet() {
+		return (languageENGRadio.isSelected() && !languagePLRadio.isSelected()) ? true : false;
+	}
+	
+	public boolean isPolishSet() {
+		return (languagePLRadio.isSelected() && !languageENGRadio.isSelected()) ? true : false;
 	}
 	
 	private void setLanguageToPolish() {
