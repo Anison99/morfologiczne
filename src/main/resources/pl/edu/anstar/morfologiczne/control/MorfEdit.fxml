@@ -24,7 +24,7 @@
 			<ChoiceBox fx:id="choiceFcnList" layoutX="93.0"
 				layoutY="21.0" prefHeight="44.0" prefWidth="528.0"
 				style="-fx-background-color: #ADD8E6;" />
-			<Button fx:id="selectImageButton" layoutX="680.0"
+			<Button fx:id="selectImageButton" layoutX="680.0" onAction="#imageSelect"
 				layoutY="21.0" mnemonicParsing="false" prefHeight="44.0"
 				prefWidth="272.0" style="-fx-background-color: #ADD8E6;"
 				text="WYBIERZ OBRAZ" textAlignment="CENTER">

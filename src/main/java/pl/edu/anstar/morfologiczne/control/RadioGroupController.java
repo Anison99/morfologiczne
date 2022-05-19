@@ -40,6 +40,14 @@ public class RadioGroupController extends ChildController implements Initializab
 		}
 	}
 	
+	public boolean isEnglishSet() {
+		return (languageENGRadio.isSelected() && !languagePLRadio.isSelected()) ? true : false;
+	}
+	
+	public boolean isPolishSet() {
+		return (languagePLRadio.isSelected() && !languageENGRadio.isSelected()) ? true : false;
+	}
+	
 	private void setLanguageToPolish() {
 		// TODO translate all fields back to Polish
 	}
