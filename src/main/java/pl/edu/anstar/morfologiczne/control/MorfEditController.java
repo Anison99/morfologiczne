@@ -36,6 +36,8 @@ public class MorfEditController implements Initializable {
 	@FXML
 	Button selectImageButton;
 	@FXML
+	Button resetButton;
+	@FXML
 	ImageView sourceImage;
 	@FXML
 	ImageView resultImage;
@@ -44,9 +46,12 @@ public class MorfEditController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		imageGroupController.parentController = this;
+		radioGroupController.imageGroupController = imageGroupController;
 		radioGroupController.parentController = this;
 		algorithmChoiceBox.setItems(FXCollections.observableArrayList("Szkieletyzacja"));
 		algorithmChoiceBox.setValue("Szkieletyzacja");
+		
+		iterLabel.setVisible(false);
 	}
 	
 	private final String SELECT_IMAGE_PL = "Wybierz obraz";

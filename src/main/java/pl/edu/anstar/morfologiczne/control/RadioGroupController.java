@@ -14,6 +14,8 @@ public class RadioGroupController implements Initializable {
 	
 	protected MorfEditController parentController;
 	
+	protected ImageGroupController imageGroupController;
+	
 	@FXML
 	RadioButton languagePLRadio;
 	@FXML
@@ -31,12 +33,13 @@ public class RadioGroupController implements Initializable {
 	
 	@FXML
 	private void setLanguageRadio(ActionEvent event) {
-		if (languagePLRadio.isSelected()) {
+		if (isPolishSet()) {
 			this.setLanguageToPolish();
 			System.out.println("PL");
+		} else if (isEnglishSet()) {
+			this.setLanguageToEnglish();
+			System.out.println("ENG");
 		}
-		this.setLanguageToEnglish();
-		System.out.println("ENG");
 	}
 	
 	public boolean isEnglishSet() {
@@ -48,11 +51,17 @@ public class RadioGroupController implements Initializable {
 	}
 	
 	private void setLanguageToPolish() {
-		// TODO translate all fields back to Polish
+		parentController.selectImageButton.setText("WYBIERZ OBRAZ");
+		parentController.resetButton.setText("WYCZYŚĆ");
+		parentController.iterLabel.setText("Liczba iteracji:");
+		imageGroupController.algorithmStepSliderLabel.setText("Krok Algorytmu");
 	}
 	
 	private void setLanguageToEnglish() {
-		// TODO translate all fields to English
+		parentController.selectImageButton.setText("SELECT IMAGE");
+		parentController.resetButton.setText("CLEAR IMAGE");
+		parentController.iterLabel.setText("Number of iterations:");
+		imageGroupController.algorithmStepSliderLabel.setText("Algorithm step");
 	}
 	
 }
