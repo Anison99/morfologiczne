@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -27,9 +28,7 @@ public class MorfEditController implements Initializable {
 	private RadioGroupController radioGroupController;
 	
 	@FXML
-	ChoiceBox<?> choiceFcnList;
-	@FXML
-	ChoiceBox<String> operationList;
+	ChoiceBox<String> algorithmChoiceBox;
 	@FXML
 	Label iterLabel;
 	
@@ -46,6 +45,8 @@ public class MorfEditController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		imageGroupController.parentController = this;
 		radioGroupController.parentController = this;
+		algorithmChoiceBox.setItems(FXCollections.observableArrayList("Szkieletyzacja"));
+		algorithmChoiceBox.setValue("Szkieletyzacja");
 	}
 	
 	private final String SELECT_IMAGE_PL = "Wybierz obraz";
@@ -62,13 +63,15 @@ public class MorfEditController implements Initializable {
 		List<String> list = Arrays.asList(new String[] { "*.bmp", "*.png", "*.jpg" });
 		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("*.bmp *.png *.jpg", list));
 		File selectedFile = fc.showOpenDialog(null);
-		
-		Mat src = Imgcodecs.imread(selectedFile.getAbsolutePath());
-		imageGroupController.getSourceImageView().setImage(Algorithm.mat2Img(src));
-		Mat tgt = Algorithm.skeletonization(src);
-		imageGroupController.getTargetImageView().setImage(Algorithm.mat2Img(tgt));
-		
-		imageGroupController.algorithmStepSliderLabel.setVisible(true);
+		try {
+			Mat src = Imgcodecs.imread(selectedFile.getAbsolutePath());
+			imageGroupController.getSourceImageView().setImage(Algorithm.mat2Img(src));
+			Mat tgt = Algorithm.skeletonization(src);
+			imageGroupController.getTargetImageView().setImage(Algorithm.mat2Img(tgt));
+			imageGroupController.algorithmStepSliderLabel.setVisible(true);
+		} catch (NullPointerException e) {
+			System.out.println("Null pointer trying to get absolute path of file");
+		}
 	}
 	
 	@FXML
