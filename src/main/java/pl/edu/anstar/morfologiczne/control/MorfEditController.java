@@ -43,21 +43,19 @@ public class MorfEditController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		radioGroupController.setParentController(this);
+		radioGroupController.mainController = this;
 	}
 	
 	@FXML
 	private void imageSelect() {
 		FileChooser fc = new FileChooser();
-		
 		if (radioGroupController.isEnglishSet()) {
 			fc.setTitle(SELECT_IMAGE_EN);
 		} else {
 			fc.setTitle(SELECT_IMAGE_PL);
 		}
-		
 		List<String> list = Arrays.asList(new String[] { "*.bmp", "*.png", "*.jpg" });
-		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", list));
+		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("*.bmp *.png *.jpg", list));
 		File selectedFile = fc.showOpenDialog(null);
 		
 		Mat src = Imgcodecs.imread(selectedFile.getAbsolutePath());

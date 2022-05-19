@@ -10,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 
-public class RadioGroupController extends ChildController implements Initializable {
+public class RadioGroupController implements Initializable {
+	
+	protected MorfEditController mainController;
 	
 	@FXML
 	private RadioButton languagePLRadio;
