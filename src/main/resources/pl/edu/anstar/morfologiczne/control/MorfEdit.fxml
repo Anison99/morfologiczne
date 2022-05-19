@@ -9,62 +9,36 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Scene xmlns="http://javafx.com/javafx/18"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="pl.edu.anstar.morfologiczne.control.MorfEditController">
-	<AnchorPane centerShape="false" maxHeight="1080.0"
-		maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity"
-		prefHeight="809.0" prefWidth="1303.0"
-		style="-fx-background-color: #F5FFFA;">
+<Scene fill="MINTCREAM" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.anstar.morfologiczne.control.MorfEditController">
+	<AnchorPane centerShape="false" maxHeight="1080.0" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="809.0" prefWidth="1303.0" style="-fx-background-color: mintcream;">
 		<children>
-			<ChoiceBox fx:id="choiceFcnList" layoutX="93.0"
-				layoutY="21.0" prefHeight="44.0" prefWidth="528.0"
-				style="-fx-background-color: #ADD8E6;" />
-			<Button fx:id="selectImageButton" layoutX="680.0"
-				layoutY="21.0" mnemonicParsing="false" onAction="#imageSelect"
-				prefHeight="44.0" prefWidth="272.0"
-				style="-fx-background-color: #ADD8E6;" text="WYBIERZ OBRAZ"
-				textAlignment="CENTER">
+			<ChoiceBox fx:id="algorithmChoiceBox" layoutX="29.0" layoutY="14.0" prefHeight="44.0" prefWidth="528.0" style="-fx-background-color: #ADD8E6;" />
+			<Button fx:id="selectImageButton" layoutX="668.0" layoutY="14.0" mnemonicParsing="false" onAction="#imageSelect" prefHeight="44.0" prefWidth="272.0" style="-fx-background-color: #ADD8E6;" text="WYBIERZ OBRAZ" textAlignment="CENTER">
 				<font>
 					<Font name="Century Gothic" size="20.0" />
 				</font>
 			</Button>
-			<Label fx:id="iterLabel" contentDisplay="RIGHT" layoutX="994.0"
-				layoutY="21.0" prefHeight="44.0" prefWidth="309.0"
-				text="LICZBA ITERACJI:">
+			<Label fx:id="iterLabel" contentDisplay="RIGHT" layoutX="965.0" layoutY="14.0" prefHeight="44.0" prefWidth="309.0" text="LICZBA ITERACJI:">
 				<font>
 					<Font name="Century Gothic" size="23.0" />
 				</font>
 				<graphic>
-					<Text fx:id="iterNumberDisplay"
-						nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE"
-						strokeWidth="0.0" textAlignment="CENTER"
-						wrappingWidth="121.336669921875">
+					<Text fx:id="iterNumberDisplay" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="121.336669921875">
 						<font>
 							<Font name="Century Gothic" size="28.0" />
 						</font>
 					</Text>
 				</graphic>
 			</Label>
-			<Pane fx:id="imageGroupPane" layoutX="29.0" layoutY="75.0"
-				maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-				minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0"
-				prefWidth="1245.0">
+			<Pane fx:id="imageGroupPane" layoutX="29.0" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="1245.0">
 				<children>
 					<fx:include fx:id="imageGroup" source="ImageGroup.fxml" />
-					<Pane fx:id="radioGroupPane" layoutX="52.0" layoutY="623.0"
-						maxHeight="1.7976931348623157E308"
-						maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-						minWidth="-Infinity">
+					<Pane fx:id="radioGroupPane" layoutX="52.0" layoutY="623.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
 						<children>
-							<fx:include fx:id="radioGroup"
-								source="RadioGroup.fxml" />
+							<fx:include fx:id="radioGroup" source="RadioGroup.fxml" />
 						</children>
 					</Pane>
-					<Button fx:id="resetButton" layoutX="333.0" layoutY="635.0"
-						mnemonicParsing="false" onAction="#reset" prefHeight="44.0"
-						prefWidth="272.0" style="-fx-background-color: #ADD8E6;"
-						text="WYCZYŚĆ" textAlignment="CENTER">
+					<Button fx:id="resetButton" layoutX="333.0" layoutY="635.0" mnemonicParsing="false" onAction="#reset" prefHeight="44.0" prefWidth="272.0" style="-fx-background-color: #ADD8E6;" text="WYCZYŚĆ" textAlignment="CENTER">
 						<font>
 							<Font name="Century Gothic" size="20.0" />
 						</font>
