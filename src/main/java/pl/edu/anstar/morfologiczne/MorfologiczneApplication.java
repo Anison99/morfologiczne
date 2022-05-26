@@ -1,6 +1,8 @@
 package pl.edu.anstar.morfologiczne;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,18 +13,19 @@ import javafx.stage.Stage;
 public class MorfologiczneApplication extends Application {
 	
 	private static Scene currentScene;
+	private static Stage mainStage;
 	
 	@Override
 	public void start(Stage stage) throws IOException {
-		currentScene = FXMLLoader.load(getClass().getResource("control/MorfEdit.fxml"));
-		// stage.setWidth(1920);
-		// stage.setHeight(1080);
-		// stage.setMaximized(true);
+		
+		ResourceBundle bundle = ResourceBundle.getBundle(
+				"pl.edu.anstar.morfologiczne.internationalization.lang", new Locale("pl_PL"));
+		currentScene = FXMLLoader.load(getClass().getResource("control/MorfEdit.fxml"), bundle);
+		mainStage = stage;
 		stage.setScene(currentScene);
-		stage.setTitle("Iteracyjne Operacje Morfologiczne");
+		stage.setTitle(bundle.getString("window.title"));
 		stage.show();
 		letterbox(currentScene, (Pane) currentScene.getRoot());
-		
 	}
 	
 	public static void main(String[] args) {
@@ -33,10 +36,14 @@ public class MorfologiczneApplication extends Application {
 		final double initWidth = scene.getWidth();
 		final double initHeight = scene.getHeight();
 		final double ratio = initWidth / initHeight;
-		SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth,
-				contentPane);
+		SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight,
+				initWidth, contentPane);
 		scene.widthProperty().addListener(sizeListener);
 		scene.heightProperty().addListener(sizeListener);
+	}
+	
+	public static void updateStageTitle(ResourceBundle bundle) {
+		mainStage.setTitle(bundle.getString("window.title"));
 	}
 	
 }
