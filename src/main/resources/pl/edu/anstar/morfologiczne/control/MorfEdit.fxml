@@ -16,10 +16,10 @@
 					<Font name="Century Gothic" size="20.0" />
 				</font>
 			</Button>
-			<Pane fx:id="imageGroupPane" layoutX="29.0" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+			<Pane layoutX="29.0" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
 				<children>
 					<fx:include fx:id="imageGroup" source="ImageGroup.fxml" />
-					<Pane fx:id="radioGroupPane" layoutX="53.0" layoutY="612.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+					<Pane layoutX="53.0" layoutY="612.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
 						<children>
 							<fx:include fx:id="radioGroup" source="RadioGroup.fxml" />
 						</children>
