@@ -14,12 +14,12 @@ public class MorfologiczneApplication extends Application {
 	
 	private static Scene currentScene;
 	private static Stage mainStage;
+	private static ResourceBundle bundle;
 	
 	@Override
 	public void start(Stage stage) throws IOException {
-		
-		ResourceBundle bundle = ResourceBundle.getBundle(
-				"pl.edu.anstar.morfologiczne.internationalization.lang", new Locale("pl_PL"));
+		bundle = ResourceBundle.getBundle("pl.edu.anstar.morfologiczne.internationalization.lang",
+				new Locale("pl_PL"));
 		currentScene = FXMLLoader.load(getClass().getResource("control/MorfEdit.fxml"), bundle);
 		mainStage = stage;
 		stage.setScene(currentScene);
@@ -44,6 +44,20 @@ public class MorfologiczneApplication extends Application {
 	
 	public static void updateStageTitle(ResourceBundle bundle) {
 		mainStage.setTitle(bundle.getString("window.title"));
+	}
+	
+	/**
+	 * 
+	 * @return ResouceBundle associated with selected language locale properties
+	 */
+	public static ResourceBundle getBundle() {
+		return bundle;
+	}
+	
+	public static ResourceBundle setBundle(Locale locale) {
+		bundle = ResourceBundle.getBundle("pl.edu.anstar.morfologiczne.internationalization.lang",
+				locale);
+		return bundle;
 	}
 	
 }
