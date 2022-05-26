@@ -75,7 +75,7 @@ public class MorfEditController implements Initializable {
 			imageGroupController.getTargetImageView().setImage(Algorithm.mat2Img(tgt));
 			imageGroupController.algorithmStepSliderLabel.setVisible(true);
 		} catch (NullPointerException e) {
-			System.out.println("Null pointer trying to get absolute path of file");
+			System.out.println("No file selected. Absolute path is null.");
 		}
 	}
 	

@@ -21,9 +21,9 @@
 			<version>18.0.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.bytedeco</groupId>
-			<artifactId>javacv-platform</artifactId>
-			<version>1.5.7</version>
+			<groupId>org.openpnp</groupId>
+			<artifactId>opencv</artifactId>
+			<version>4.5.1-2</version>
 		</dependency>
 	</dependencies>
 
@@ -47,7 +47,33 @@
 						<!-- Default configuration for running with: mvn clean javafx:run -->
 						<id>default-cli</id>
 						<configuration>
-							<mainClass>pl.edu.anstar.morfologiczne.MorfologiczneApplication</mainClass>
+							<mainClass>pl.edu.anstar.morfologiczne.Main</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.3.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>pl.edu.anstar.morfologiczne.Main</mainClass>
+								</transformer>
+							</transformers>
+							<artifactSet>
+								<excludes>
+									<exclude></exclude>
+								</excludes>
+							</artifactSet>
 						</configuration>
 					</execution>
 				</executions>
