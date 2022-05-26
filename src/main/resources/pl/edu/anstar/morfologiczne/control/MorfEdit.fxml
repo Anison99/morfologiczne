@@ -17,41 +17,41 @@
 					<Font name="Century Gothic" size="72.0" />
 				</font>
 			</Text>
-         <VBox alignment="CENTER">
-            <children>
-               <HBox alignment="CENTER_LEFT" spacing="50.0">
-                  <children>
-      					<ChoiceBox fx:id="algorithmChoiceBox" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #ADD8E6;" />
-      					<Button fx:id="selectImageButton" mnemonicParsing="false" onAction="#imageSelect" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #ADD8E6;" text="WYBIERZ OBRAZ" textAlignment="CENTER">
-      						<font>
-      							<Font name="Century Gothic" size="20.0" />
-      						</font>
-      					</Button>
-                  </children>
-                  <VBox.margin>
-                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                  </VBox.margin>
-               </HBox>
-      							<fx:include fx:id="imageGroup" source="ImageGroup.fxml">
-                  <padding>
-                     <Insets left="20.0" right="100.0" />
-                  </padding>
-               </fx:include>
-               <HBox alignment="CENTER_LEFT" spacing="120.0">
-                  <children>
-      							<fx:include fx:id="radioGroup" source="RadioGroup.fxml" />
-            					<Button fx:id="resetButton" mnemonicParsing="false" onAction="#reset" prefHeight="44.0" prefWidth="250.0" style="-fx-background-color: #ADD8E6;" text="WYCZYŚĆ" textAlignment="CENTER">
-            						<font>
-            							<Font name="Century Gothic" size="20.0" />
-            						</font>
-            					</Button>
-                  </children>
-               </HBox>
-            </children>
-         </VBox>
+			<VBox alignment="CENTER">
+				<children>
+					<HBox alignment="CENTER_LEFT" spacing="50.0">
+						<children>
+							<ChoiceBox fx:id="algorithmChoiceBox" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #ADD8E6;" />
+							<Button fx:id="selectImageButton" mnemonicParsing="false" onAction="#imageSelect" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #ADD8E6;" text="WYBIERZ OBRAZ" textAlignment="CENTER">
+								<font>
+									<Font name="Century Gothic" size="20.0" />
+								</font>
+							</Button>
+						</children>
+						<VBox.margin>
+							<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+						</VBox.margin>
+					</HBox>
+					<fx:include fx:id="imageGroup" source="ImageGroup.fxml">
+						<padding>
+							<Insets left="20.0" right="100.0" />
+						</padding>
+					</fx:include>
+					<HBox alignment="CENTER_LEFT" spacing="120.0">
+						<children>
+							<fx:include fx:id="radioGroup" source="RadioGroup.fxml" />
+							<Button fx:id="resetButton" mnemonicParsing="false" onAction="#reset" prefHeight="44.0" prefWidth="250.0" style="-fx-background-color: #ADD8E6;" text="WYCZYŚĆ" textAlignment="CENTER">
+								<font>
+									<Font name="Century Gothic" size="20.0" />
+								</font>
+							</Button>
+						</children>
+					</HBox>
+				</children>
+			</VBox>
 		</children>
-      <padding>
-         <Insets left="20.0" right="20.0" />
-      </padding>
+		<padding>
+			<Insets left="20.0" right="20.0" />
+		</padding>
 	</VBox>
 </Scene>
