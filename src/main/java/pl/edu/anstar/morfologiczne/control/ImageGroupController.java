@@ -70,9 +70,9 @@ public class ImageGroupController implements Initializable {
 		targetImageView.setImage(mat2Img(targetMat));
 	}
 	
-	public void setUpImages(Mat pathToImage) {
-		this.sourceMat = pathToImage;
-		this.sourceImageView.setImage(mat2Img(pathToImage));
+	public void setUpImages(Mat uploadedImage) {
+		this.sourceMat = uploadedImage;
+		this.sourceImageView.setImage(mat2Img(uploadedImage));
 		calculateTarget(parentController.getSelectedAlgorithm());
 		setUpSlider();
 		calculateTarget(parentController.getSelectedAlgorithm());
