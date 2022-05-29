@@ -14,9 +14,9 @@ import pl.edu.anstar.morfologiczne.MorfologiczneApplication;
 
 public class RadioGroupController implements Initializable {
 	
-	protected MorfEditController parentController;
+	private MorfEditController parentController;
 	
-	protected ImageGroupController imageGroupController;
+	private ImageGroupController imageGroupController;
 	
 	@FXML
 	private RadioButton languagePLRadio;
@@ -33,6 +33,12 @@ public class RadioGroupController implements Initializable {
 		this.languagePLRadio.setSelected(true);
 	}
 	
+	public void setParentControllers(MorfEditController mainController,
+			ImageGroupController imageController) {
+		this.imageGroupController = imageController;
+		this.parentController = mainController;
+	}
+	
 	@FXML
 	private void setLanguageRadio(ActionEvent event) {
 		RadioButton source = (RadioButton) event.getSource();
@@ -46,10 +52,9 @@ public class RadioGroupController implements Initializable {
 	public void setLanguage(String langCode, String countryCode) {
 		Locale locale = new Locale(langCode, countryCode);
 		ResourceBundle bundle = MorfologiczneApplication.setBundle(locale);
-		final String selectImage = bundle.getString("key.selectImage");
-		final String reset = bundle.getString("key.reset");
-		parentController.selectImageButton.setText(selectImage);
-		parentController.resetButton.setText(reset);
+		imageGroupController.replaceButton.setText(bundle.getString("key.replace"));
+		parentController.selectImageButton.setText(bundle.getString("key.selectImage"));
+		parentController.resetButton.setText(bundle.getString("key.reset"));
 		parentController.setUpChoiceBox();
 		MorfologiczneApplication.updateStageTitle(bundle);
 	}
