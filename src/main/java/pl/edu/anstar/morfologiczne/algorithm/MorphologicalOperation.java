@@ -42,10 +42,6 @@ public abstract class MorphologicalOperation {
 		return structureElement;
 	}
 	
-	public MorphologicalOperation(Mat source) {
-		calculate();
-	}
-	
-	public abstract void calculate();
+	public abstract Mat calculate(Mat source);
 	
 }
