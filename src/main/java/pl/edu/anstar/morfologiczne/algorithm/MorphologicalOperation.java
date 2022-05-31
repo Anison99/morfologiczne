@@ -44,7 +44,6 @@ public abstract class MorphologicalOperation {
 	
 	public MorphologicalOperation(Mat source) {
 		calculate();
-		// this.structureElement = Imgproc.morph,(new Size(3, 3));
 	}
 	
 	public abstract void calculate();

@@ -17,11 +17,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import pl.edu.anstar.morfologiczne.algorithm.MorphologicalOperation;
 import pl.edu.anstar.morfologiczne.algorithm.MorphologicalOperation.MorphologicalAlgorithmChoice;;
 
 public class ImageGroupController implements Initializable {
 	
 	protected MorfEditController parentController;
+	private MorphologicalOperation currentOperation;
+	
+	public MorphologicalOperation getCurrentOperation() {
+		return currentOperation;
+	}
 	
 	@FXML
 	Label algorithmStepSliderLabel;
@@ -75,7 +81,6 @@ public class ImageGroupController implements Initializable {
 		this.sourceImageView.setImage(mat2Img(uploadedImage));
 		calculateTarget(parentController.getSelectedAlgorithm());
 		setUpSlider();
-		calculateTarget(parentController.getSelectedAlgorithm());
 		
 	}
 	
