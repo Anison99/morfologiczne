@@ -18,7 +18,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pl.edu.anstar.morfologiczne.algorithm.MorphologicalOperation;
-import pl.edu.anstar.morfologiczne.algorithm.MorphologicalOperation.MorphologicalAlgorithmChoice;;
+import pl.edu.anstar.morfologiczne.algorithm.MorphologicalOperation.MorphologicalAlgorithmChoice;
+import pl.edu.anstar.morfologiczne.algorithm.Skeletonization;;
 
 public class ImageGroupController implements Initializable {
 	
@@ -96,8 +97,7 @@ public class ImageGroupController implements Initializable {
 	}
 	
 	public static Mat skeletonization(Mat sourceImg) {
-		// TODO
-		return null;
+		return new Skeletonization().calculate(sourceImg);
 	}
 	
 	public static Mat centroids(Mat sourceImg) {
