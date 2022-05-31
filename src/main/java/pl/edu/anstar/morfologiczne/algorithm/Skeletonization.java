@@ -27,18 +27,11 @@ public class Skeletonization extends MorphologicalOperation {
 			var eroded = Mat.zeros(size2, CvType.CV_8UC1);
 			var temp = Mat.zeros(size2, CvType.CV_8UC1);
 			while (!done) {
-				// Imgproc.morphologyEx(source, eroded, Imgproc.MORPH_ERODE, kernel);
-				
 				Imgproc.erode(source, eroded, kernel);
-				// Imgproc.morphologyEx(eroded, temp, Imgproc.MORPH_DILATE, kernel);
 				Imgproc.dilate(eroded, temp, kernel);
-				
 				Core.subtract(source, temp, temp);
-				
 				Core.bitwise_or(skel, temp, skel);
-				
 				System.out.println("Dupa");
-				
 				eroded.copyTo(source);
 				source.convertTo(source, CvType.CV_8UC1);
 				var zeros = size - Core.countNonZero(source);
