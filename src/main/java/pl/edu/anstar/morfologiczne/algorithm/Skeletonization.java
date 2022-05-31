@@ -4,11 +4,18 @@ import org.opencv.core.Mat;
 
 public class Skeletonization extends MorphologicalOperation {
 	
-	@Override
-	public Mat calculate(Mat source) {
-		// TODO
-		
-		return null;
+	public Skeletonization(Mat source) {
+		super(source);
 	}
 	
+	@Override
+	public void calculate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Mat calculate(Mat source) {
+		return null;
+	}
 }

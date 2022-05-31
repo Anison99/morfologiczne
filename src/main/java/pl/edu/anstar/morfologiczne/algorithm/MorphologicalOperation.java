@@ -7,7 +7,11 @@ import org.opencv.core.Mat;
 import pl.edu.anstar.morfologiczne.MorfologiczneApplication;
 
 public abstract class MorphologicalOperation {
-	
+
+	public MorphologicalOperation(Mat source) {
+
+	}
+
 	public enum MorphologicalAlgorithmChoice {
 		SKEL, BRANCH, CENTROID;
 		
@@ -41,7 +45,9 @@ public abstract class MorphologicalOperation {
 	public Mat getStructureElement() {
 		return structureElement;
 	}
-	
+
+	public abstract void calculate();
+
 	public abstract Mat calculate(Mat source);
 	
 }
