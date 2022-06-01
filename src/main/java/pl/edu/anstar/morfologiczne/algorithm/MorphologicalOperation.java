@@ -1,5 +1,6 @@
 package pl.edu.anstar.morfologiczne.algorithm;
 
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import org.opencv.core.Mat;
@@ -22,18 +23,27 @@ public abstract class MorphologicalOperation {
 		}
 	}
 	
-	protected Mat[] results;
+	protected ArrayList<Mat> results = new ArrayList<>();
+	protected int currentIter;
 	
-	public Mat getLastResult() {
-		return results[results.length - 1];
+	public int getCurrentIter() {
+		return currentIter;
+	}
+	
+	public Mat getCurrentResult() {
+		return results.get(this.getCurrentIter());
+	}
+	
+	public Mat getFinalResult() {
+		return results.get(results.size() - 1);
 	}
 	
 	public Mat getResult(int index) {
-		return results[index];
+		return results.get(index);
 	}
 	
 	public int getAmountofResults() {
-		return results.length;
+		return results.size();
 	}
 	
 	protected Mat structureElement;
@@ -42,6 +52,9 @@ public abstract class MorphologicalOperation {
 		return structureElement;
 	}
 	
-	public abstract Mat calculate(Mat source);
+	public void setStructureElement(Mat structureElement) {
+		this.structureElement = structureElement;
+	}
 	
+	public abstract Mat calculate(Mat source);
 }

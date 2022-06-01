@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import pl.edu.anstar.morfologiczne.algorithm.MorphologicalOperation;
 import pl.edu.anstar.morfologiczne.algorithm.MorphologicalOperation.MorphologicalAlgorithmChoice;
 import pl.edu.anstar.morfologiczne.algorithm.Skeletonization;;
@@ -24,7 +25,7 @@ import pl.edu.anstar.morfologiczne.algorithm.Skeletonization;;
 public class ImageGroupController implements Initializable {
 	
 	protected MorfEditController parentController;
-	private MorphologicalOperation currentOperation;
+	private static MorphologicalOperation currentOperation;
 	
 	public MorphologicalOperation getCurrentOperation() {
 		return currentOperation;
@@ -35,8 +36,34 @@ public class ImageGroupController implements Initializable {
 	@FXML
 	Slider algorithmStepSlider;
 	
+	private void setUpSlider() {
+		this.algorithmStepSliderLabel.setVisible(true);
+		this.algorithmStepSlider.setMax(currentOperation.getAmountofResults() - 1);
+		this.algorithmStepSlider.setValue(1);
+	}
+	
+	@FXML
+	private void sliderDragDroppedListener(MouseEvent event) {
+		try {
+			this.targetMat = currentOperation.getResult((int) (algorithmStepSlider.getValue()));
+			System.out.println(targetMat);
+			System.out.println(algorithmStepSlider.getValue());
+			this.targetImageView.setImage(mat2Img(targetMat));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+	
+	// Replace button (for testing as of now)
 	@FXML
 	Button replaceButton;
+	
+	@FXML
+	private void fireReplaceButton(ActionEvent event) {
+		this.sourceImageView.setImage(targetImageView.getImage());
+		this.sourceMat.setTo(targetMat);
+	}
 	
 	@FXML
 	private ImageView sourceImageView;
@@ -50,22 +77,11 @@ public class ImageGroupController implements Initializable {
 		this.algorithmStepSliderLabel.setVisible(false);
 	}
 	
-	public ImageView getSourceImageView() {
-		return sourceImageView;
-	}
-	
-	public ImageView getTargetImageView() {
-		return targetImageView;
-	}
-	
-	@FXML
-	private void fireReplaceButton(ActionEvent event) {
-		this.sourceImageView.setImage(targetImageView.getImage());
-	}
-	
-	public void setUpSlider() {
-		this.algorithmStepSliderLabel.setVisible(true);
-		this.algorithmStepSlider.setValue(1);
+	public void setUpImages(Mat uploadedImage) {
+		this.sourceMat = uploadedImage;
+		this.sourceImageView.setImage(mat2Img(uploadedImage));
+		calculateTarget(parentController.getSelectedAlgorithm());
+		setUpSlider();
 	}
 	
 	public void calculateTarget(MorphologicalAlgorithmChoice selectedAlgorithm) {
@@ -77,27 +93,12 @@ public class ImageGroupController implements Initializable {
 		targetImageView.setImage(mat2Img(targetMat));
 	}
 	
-	public void setUpImages(Mat uploadedImage) {
-		this.sourceMat = uploadedImage;
-		this.sourceImageView.setImage(mat2Img(uploadedImage));
-		calculateTarget(parentController.getSelectedAlgorithm());
-		setUpSlider();
-		
-	}
-	
-	public static Mat loadImage(String imagePath) {
-		return Imgcodecs.imread(imagePath);
-	}
-	
-	public static Image mat2Img(Mat mat) {
-		MatOfByte bytes = new MatOfByte();
-		Imgcodecs.imencode("img.bmp", mat, bytes);
-		InputStream inputStream = new ByteArrayInputStream(bytes.toArray());
-		return new Image(inputStream);
-	}
-	
 	public static Mat skeletonization(Mat sourceImg) {
-		return new Skeletonization().calculate(sourceImg);
+		Skeletonization skel = new Skeletonization();
+		ImageGroupController.currentOperation = skel;
+		skel.calculate(sourceImg);
+		
+		return skel.getFinalResult();
 	}
 	
 	public static Mat centroids(Mat sourceImg) {
@@ -110,4 +111,24 @@ public class ImageGroupController implements Initializable {
 		return null;
 	}
 	
+	ImageView getSourceImageView() {
+		return sourceImageView;
+	}
+	
+	ImageView getTargetImageView() {
+		return targetImageView;
+	}
+	
+	// Util function
+	
+	// private static Mat loadImage(String imagePath) {
+	// return Imgcodecs.imread(imagePath);
+	// }
+	
+	private static Image mat2Img(Mat mat) {
+		MatOfByte bytes = new MatOfByte();
+		Imgcodecs.imencode("img.bmp", mat, bytes);
+		InputStream inputStream = new ByteArrayInputStream(bytes.toArray());
+		return new Image(inputStream);
+	}
 }
