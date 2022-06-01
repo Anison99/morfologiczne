@@ -11,34 +11,44 @@ public class Skeletonization extends MorphologicalOperation {
 	@Override
 	public Mat calculate(Mat input) {
 		Mat source = input.clone();
+		Imgproc.cvtColor(source, source, Imgproc.COLOR_RGB2GRAY);
+		source.convertTo(source, CvType.CV_8UC1);
+		// int row = 0, col = 0;
 		try {
-			Imgproc.cvtColor(source, source, Imgproc.COLOR_RGB2GRAY);
+			
 			// source.convertTo(source, CvType.CV_8UC1);
 			// Imgproc.threshold(source, source, 127, 255, CvType.CV_8UC1);
 			// Imgproc.morphologyEx(source, source, Imgproc.MORPH_DILATE, source);
 			int size = source.cols() * source.rows();
 			Size size2 = new Size(source.cols(), source.rows());
-			var skel = Mat.zeros(size2, CvType.CV_8UC1);
-			
-			// Mat kernel = new Mat(3, 3, CvType.CV_16S);
-			var kernel = Imgproc.getStructuringElement(Imgproc.MORPH_CROSS, new Size(3, 3));
-			kernel.convertTo(kernel, CvType.CV_8UC1);
+			Mat skel = Mat.zeros(size2, CvType.CV_8UC1);
+			// this.structureElement = Imgproc.getStructuringElement(Imgproc.MORPH_CROSS,
+			// new Size(3, 3));
+			this.structureElement = new Mat(3, 3, CvType.CV_8UC1);
+//			// @formatter:off
+			this.structureElement.put(0, 0,
+					1, 1, 1,
+					0, 1, 0,
+					0, 1, 0);
+//			// @formatter:on
 			boolean done = false;
 			var eroded = Mat.zeros(size2, CvType.CV_8UC1);
 			var temp = Mat.zeros(size2, CvType.CV_8UC1);
+			
 			while (!done) {
-				Imgproc.erode(source, eroded, kernel);
-				Imgproc.dilate(eroded, temp, kernel);
+				Imgproc.erode(source, eroded, this.structureElement);
+				Imgproc.dilate(eroded, temp, this.structureElement);
+				this.results.add(eroded.clone());
 				Core.subtract(source, temp, temp);
 				Core.bitwise_or(skel, temp, skel);
-				System.out.println("Dupa");
+				this.results.add(skel.clone());
 				eroded.copyTo(source);
-				source.convertTo(source, CvType.CV_8UC1);
 				var zeros = size - Core.countNonZero(source);
 				if (zeros == size) {
 					done = true;
 				}
 			}
+			this.results.add(skel);
 			return skel;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

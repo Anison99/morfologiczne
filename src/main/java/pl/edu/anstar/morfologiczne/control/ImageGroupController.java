@@ -35,19 +35,26 @@ public class ImageGroupController implements Initializable {
 	Label algorithmStepSliderLabel;
 	@FXML
 	Slider algorithmStepSlider;
+	int sliderValue;
 	
 	private void setUpSlider() {
 		this.algorithmStepSliderLabel.setVisible(true);
 		this.algorithmStepSlider.setMax(currentOperation.getAmountofResults() - 1);
 		this.algorithmStepSlider.setValue(1);
+		sliderValue = 1;
 	}
 	
 	@FXML
 	private void sliderDragDroppedListener(MouseEvent event) {
+		if (algorithmStepSlider.getValue() == sliderValue) {
+			return;
+		}
 		try {
-			this.targetMat = currentOperation.getResult((int) (algorithmStepSlider.getValue()));
+			sliderValue = (int) algorithmStepSlider.getValue();
+			this.targetMat = currentOperation.getResult(sliderValue);
 			System.out.println(targetMat);
-			System.out.println(algorithmStepSlider.getValue());
+			System.out.println(currentOperation.getResult(sliderValue));
+			System.out.println(sliderValue);
 			this.targetImageView.setImage(mat2Img(targetMat));
 		} catch (Exception e) {
 			System.out.println(e);
@@ -98,7 +105,7 @@ public class ImageGroupController implements Initializable {
 		ImageGroupController.currentOperation = skel;
 		skel.calculate(sourceImg);
 		
-		return skel.getFinalResult();
+		return skel.getCurrentResult();
 	}
 	
 	public static Mat centroids(Mat sourceImg) {
