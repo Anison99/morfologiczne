@@ -13,7 +13,8 @@ public class SceneSizeChangeListener implements ChangeListener<Number> {
 	private final double initWidth;
 	private final Pane contentPane;
 	
-	public SceneSizeChangeListener(Scene scene, double ratio, double initHeight, double initWidth, Pane contentPane) {
+	public SceneSizeChangeListener(Scene scene, double ratio, double initHeight, double initWidth,
+			Pane contentPane) {
 		this.scene = scene;
 		this.ratio = ratio;
 		this.initHeight = initHeight;
@@ -22,25 +23,20 @@ public class SceneSizeChangeListener implements ChangeListener<Number> {
 	}
 	
 	@Override
-	public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+	public void changed(ObservableValue<? extends Number> observableValue, Number oldValue,
+			Number newValue) {
 		final double newWidth = scene.getWidth();
 		final double newHeight = scene.getHeight();
 		
-		double scaleFactor = newWidth / newHeight > ratio ? newHeight / initHeight : newWidth / initWidth;
+		double scaleFactor = newWidth / newHeight > ratio ? newHeight / initHeight
+				: newWidth / initWidth;
 		
 		Scale scale = new Scale(scaleFactor, scaleFactor);
 		scale.setPivotX(0);
 		scale.setPivotY(0);
 		scene.getRoot().getTransforms().setAll(scale);
 		
-		contentPane.setPrefWidth(newWidth / scaleFactor);
-		contentPane.setPrefHeight(newHeight / scaleFactor);
-		
-		if (scaleFactor >= 1) {
-			
-		} else {
-			contentPane.setPrefWidth(Math.max(initWidth, newWidth));
-			contentPane.setPrefHeight(Math.max(initHeight, newHeight));
-		}
+		contentPane.setPrefWidth(Math.max(initWidth, newWidth));
+		contentPane.setPrefHeight(Math.max(initHeight, newHeight));
 	}
 }

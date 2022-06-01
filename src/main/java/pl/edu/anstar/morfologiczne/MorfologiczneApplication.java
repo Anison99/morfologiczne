@@ -22,6 +22,8 @@ public class MorfologiczneApplication extends Application {
 				new Locale("pl_PL"));
 		currentScene = FXMLLoader.load(getClass().getResource("control/MorfEdit.fxml"), bundle);
 		mainStage = stage;
+		stage.setHeight(800);
+		stage.setWidth(1400);
 		stage.setScene(currentScene);
 		stage.setTitle(bundle.getString("window.title"));
 		stage.show();
